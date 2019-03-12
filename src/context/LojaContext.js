@@ -8,7 +8,8 @@ export const LojaContext = React.createContext();
 export class LojaProvider extends Component {
   state = {
     produtos: BancoDeDados.getProdutos(),
-    carrinho: []
+    carrinho: [],
+    carrinhoVisivel: false
   };  
 
   render() {
@@ -29,6 +30,12 @@ export class LojaProvider extends Component {
             let carrinho = [...this.state.carrinho];
             carrinho.splice(indice, 1);
             this.setState({carrinho});
+          },
+          mostrarCarrinho: () => {
+            this.setState({carrinhoVisivel: true});
+          },
+          esconderCarrinho: () => {
+            this.setState({carrinhoVisivel: false});
           }
       }}>
         {this.props.children}

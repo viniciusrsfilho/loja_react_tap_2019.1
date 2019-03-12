@@ -22,7 +22,7 @@ class BarraDeBusca extends Component {
                     <FormControl type="text" placeholder="Procurar" className="mr-sm-2" onChange={(event) => context.buscar(event.target.value)} />
                   </Form>
                   { (context.state.carrinho.length <= 0) ? '' : (
-                    <Button variant="primary">
+                    <Button variant="primary" onClick={context.mostrarCarrinho}>
                       🛒 <Badge variant="light">{context.state.carrinho.length}</Badge>
                     </Button>
                   ) }
