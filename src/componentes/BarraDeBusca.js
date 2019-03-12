@@ -1,30 +1,37 @@
 import React, { Component } from 'react';
 import {LojaContext} from '../context/LojaContext';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import FormControl from 'react-bootstrap/FormControl';
+import Badge from 'react-bootstrap/Badge';
 
 class BarraDeBusca extends Component {    
   render() {
     return (
-        <header>
-        <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-          <a className="navbar-brand" href="#">Facisa Store</a>
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarCollapse">
-            <ul className="navbar-nav mr-auto">
-            </ul>
-            <form className="form-inline mt-2 mt-md-0">
-              <LojaContext.Consumer>
-                {(context) => (
-                  <input className="form-control mr-sm-2" type="text" 
-                    placeholder="Procurar" aria-label="Search" 
-                    onChange={(event) => context.buscar(event.target.value)}/>
-                )}
-              </LojaContext.Consumer>
-            </form>
-          </div>
-        </nav>
-      </header>
+      <Navbar bg="light" fixed="top">
+        <Navbar.Brand>Facisa Store</Navbar.Brand>
+        <Nav>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <LojaContext.Consumer>
+              {(context) => (
+                <React.Fragment>
+                  <Form inline>
+                    <FormControl type="text" placeholder="Procurar" className="mr-sm-2" onChange={(event) => context.buscar(event.target.value)} />
+                  </Form>
+                  { (context.state.carrinho.length <= 0) ? '' : (
+                    <Button variant="primary">
+                      🛒 <Badge variant="light">{context.state.carrinho.length}</Badge>
+                    </Button>
+                  ) }
+                </React.Fragment>
+              )}
+            </LojaContext.Consumer>
+          </Navbar.Collapse>
+        </Nav>
+      </Navbar>
     );
   }
 }

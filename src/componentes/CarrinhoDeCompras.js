@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {LojaContext} from '../context/LojaContext';
+import Modal from 'react-bootstrap/Modal';
 
 class CarrinhoDeCompras extends Component {
   renderProduto = (p, index) => {
@@ -28,31 +29,35 @@ class CarrinhoDeCompras extends Component {
           // Calcula o total
           let total = context.state.carrinho.reduce((acc, p) => acc + p.preco, 0);
 
-          return context.state.carrinho.length <= 0 ? "" : (
-            <React.Fragment>
-              <h2>Carrinho</h2>
-              <table className="table">
-                <thead>
-                  <tr>
-                    <th>&nbsp;</th>
-                    <th>Produto</th>
-                    <th>Valor</th>
-                    <th>Ação</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {context.state.carrinho.map(this.renderProduto)}
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <th>&nbsp;</th>
-                    <th>Total</th>
-                    <th>R$ {total.toFixed(2)}</th>
-                    <th>&nbsp;</th>
-                  </tr>
-                </tfoot>
-              </table>
-            </React.Fragment>
+          return (
+            <Modal.Dialog show={true} centered>
+              <Modal.Header closeButton>
+                <Modal.Title>Carrinho de Compras</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <table className="table">
+                  <thead>
+                    <tr>
+                      <th>&nbsp;</th>
+                      <th>Produto</th>
+                      <th>Valor</th>
+                      <th>Ação</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {context.state.carrinho.map(this.renderProduto)}
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th>&nbsp;</th>
+                      <th>Total</th>
+                      <th>R$ {total.toFixed(2)}</th>
+                      <th>&nbsp;</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </Modal.Body>
+            </Modal.Dialog>
           );
         }}
       </LojaContext.Consumer>

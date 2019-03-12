@@ -8,14 +8,9 @@ class Loja extends Component {
   render() {
     return (
       <LojaProvider>
-        <div>
-          <BarraDeBusca/>
-          <div class="container">
-            <ListaDeProdutos/>
-            <hr/>
-            <CarrinhoDeCompras/>
-          </div>
-        </div>
+        <BarraDeBusca/>
+        <ListaDeProdutos/>
+        <CarrinhoDeCompras/>
       </LojaProvider>
     );
   }
