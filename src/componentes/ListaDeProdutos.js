@@ -7,7 +7,7 @@ const PRODUTOS_POR_LINHA = 4;
 class ListaDeProdutos extends Component {
   renderProduto = (linha) => {
     return (
-      <div class="card-deck mb-4 text-center">
+      <div class="row">
         {linha.map((p) => (
           <ItemProduto produto={p} />
         ))}
