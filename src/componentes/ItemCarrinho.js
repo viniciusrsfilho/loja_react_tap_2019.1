@@ -12,17 +12,15 @@ class ItemCarrinho extends Component {
         <td>{this.props.produto.nome}</td>
         <td><FormataMoeda valor={this.props.produto.preco}/></td>
         <td>
-          <LojaContext.Consumer>
-            {(context) => (
-              <Button variant="danger" onClick={() => context.remover(this.props.index)}>
-                Remover
-              </Button>
-            )}
-          </LojaContext.Consumer>
+          <Button variant="danger" onClick={() => this.context.remover(this.props.index)}>
+            Remover
+          </Button>
         </td>
       </tr>
     );
   }
 }
+
+ItemCarrinho.contextType = LojaContext;
 
 export default ItemCarrinho;

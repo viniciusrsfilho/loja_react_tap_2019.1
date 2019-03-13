@@ -8,26 +8,20 @@ import Table from 'react-bootstrap/Table';
 class CarrinhoDeCompras extends Component {
   render() {
     return (
-      <LojaContext.Consumer>
-        {(context) => {
-          return (
-            <Modal show={context.state.carrinhoVisivel} centered onHide={context.esconderCarrinho}>
-              <Modal.Header closeButton>
-                <Modal.Title>Carrinho de Compras</Modal.Title>
-              </Modal.Header>
-              <Modal.Body>
-                <Table striped bordered hover>
-                  <Cabecalho/>
-                  <tbody>
-                    {context.state.carrinho.map(this.renderProduto)}
-                  </tbody>
-                  <Rodape carrinho={context.state.carrinho} />
-                </Table>
-              </Modal.Body>
-            </Modal>
-          );
-        }}
-      </LojaContext.Consumer>
+      <Modal show={this.context.state.carrinhoVisivel} centered onHide={this.context.esconderCarrinho}>
+        <Modal.Header closeButton>
+          <Modal.Title>Carrinho de Compras</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Table striped bordered hover>
+            <Cabecalho/>
+            <tbody>
+              {this.context.state.carrinho.map(this.renderProduto)}
+            </tbody>
+            <Rodape carrinho={this.context.state.carrinho} />
+          </Table>
+        </Modal.Body>
+      </Modal>
     );
   }
 
@@ -62,5 +56,7 @@ function Rodape(props) {
     </tfoot>
   );
 }
+
+CarrinhoDeCompras.contextType = LojaContext;
 
 export default CarrinhoDeCompras;

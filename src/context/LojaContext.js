@@ -3,8 +3,14 @@ import BancoDeDados from '../bd/BancoDeDados';
 
 // Vamos usar a nova Context API 
 // 1. Primeiro a gente cria o contexto
+// Um contexto armazena um objeto value
 export const LojaContext = React.createContext();
+
 // 2. Depois a gente cria um provider
+// Um provider injeta um value em um context
+// 
+// Esse componente serve apenas para colocar um valor em um contexto, e passar
+// esses valores para os componentes filhos.
 export class LojaProvider extends Component {
   state = {
     produtos: BancoDeDados.getProdutos(),

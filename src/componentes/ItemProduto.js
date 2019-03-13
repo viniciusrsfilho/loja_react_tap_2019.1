@@ -14,18 +14,16 @@ class ItemProduto extends Component {
           <Card.Img variant="top" src={this.props.produto.imagem} />
           <Card.Body>
             <Card.Title><FormataMoeda valor={this.props.produto.preco}/></Card.Title>
-            <LojaContext.Consumer>
-              {(context) => (
-                <Button variant="outline-primary" block onClick={() => context.comprar(this.props.produto)}>
-                  Comprar
-                </Button>
-              )}
-            </LojaContext.Consumer>
+            <Button variant="outline-primary" block onClick={() => this.context.comprar(this.props.produto)}>
+              Comprar
+            </Button>
           </Card.Body>
         </Card>
       </Col>
     );
   }
 }
+
+ItemProduto.contextType = LojaContext;
 
 export default ItemProduto;

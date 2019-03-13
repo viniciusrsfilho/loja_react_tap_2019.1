@@ -15,25 +15,24 @@ class BarraDeBusca extends Component {
         <Nav>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <LojaContext.Consumer>
-              {(context) => (
-                <React.Fragment>
-                  <Form inline>
-                    <FormControl type="text" placeholder="Procurar" className="mr-sm-2" onChange={(event) => context.buscar(event.target.value)} />
-                  </Form>
-                  { (context.state.carrinho.length <= 0) ? '' : (
-                    <Button variant="primary" onClick={context.mostrarCarrinho}>
-                      🛒 <Badge variant="light">{context.state.carrinho.length}</Badge>
-                    </Button>
-                  ) }
-                </React.Fragment>
-              )}
-            </LojaContext.Consumer>
+            <React.Fragment>
+              <Form inline>
+                <FormControl type="text" placeholder="Procurar" className="mr-sm-2" 
+                  onChange={(event) => this.context.buscar(event.target.value)} />
+              </Form>
+              { (this.context.state.carrinho.length <= 0) ? '' : (
+                <Button variant="primary" onClick={this.context.mostrarCarrinho}>
+                  🛒 <Badge variant="light">{this.context.state.carrinho.length}</Badge>
+                </Button>
+              ) }
+            </React.Fragment>
           </Navbar.Collapse>
         </Nav>
       </Navbar>
     );
   }
 }
+
+BarraDeBusca.contextType = LojaContext;
 
 export default BarraDeBusca;

@@ -19,12 +19,12 @@ class ListaDeProdutos extends Component {
   render() {
     return (
       <Container>
-        <LojaContext.Consumer>
-          {(context) => Toolkit.splitArray(context.state.produtos, PRODUTOS_POR_LINHA).map(this.renderProduto)}
-        </LojaContext.Consumer>
+        {Toolkit.splitArray(this.context.state.produtos, PRODUTOS_POR_LINHA).map(this.renderProduto)}
       </Container>
     );
   }
 }
+
+ListaDeProdutos.contextType = LojaContext;
 
 export default ListaDeProdutos;
