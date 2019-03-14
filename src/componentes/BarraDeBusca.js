@@ -11,7 +11,7 @@ class BarraDeBusca extends Component {
   render() {
     return (
       <Navbar bg="light" fixed="top">
-        <Navbar.Brand>Facisa Store</Navbar.Brand>
+        <Navbar.Brand>Car Store</Navbar.Brand>
         <Nav>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
