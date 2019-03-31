@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, FormGroup, FormControl } from "react-bootstrap";
 import { withRouter } from 'react-router-dom';
+import "./Login.css";
 
 class Login extends Component {
 
@@ -10,16 +11,16 @@ class Login extends Component {
 
     render() {
         return (
-          <form>
+          <form className="Login">
           <FormGroup controlId="email" bsSize="large">
-            <h1>Email</h1>
+            <h3>Email</h3>
             <FormControl
               autoFocus
               type="text"
             />
           </FormGroup>
           <FormGroup controlId="password" bsSize="large">
-            <h1>Password</h1>
+            <h3>Password</h3>
             <FormControl
               type="password"
             />
